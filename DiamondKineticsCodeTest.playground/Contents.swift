@@ -26,7 +26,7 @@ let players: Array<(name: String, league: String, startTime: Float, endTime: Flo
  */
 //Function to get bat speed
 func batSpeed(endTime: Float, startTime: Float) -> Float {
-    return endTime - startTime
+    return (endTime - startTime)
 }
 
 //Function to return list given time parameter
@@ -43,3 +43,17 @@ func retrieveList(timeParameter: Float, players: Array<(name: String, league: St
     //returns an array of only the players that have a bat speed within the time parameter requested.  We can now display this new list in the UI.
     return newArray
 }
+
+//Function to print to console the bat speeds for all players
+func retrieveAllBatSpeeds(players: Array<(name: String, league: String, startTime: Float, endTime: Float)>){
+    var string = ""
+    for player in players{
+        let playerBatSpeed = batSpeed(endTime: player.endTime, startTime: player.startTime)
+        string = "\(player.name) has a bat speed of \(playerBatSpeed)"
+        print(string)
+    }
+}
+
+//Get the bat speeds for all payers:
+retrieveAllBatSpeeds(players: players)
+

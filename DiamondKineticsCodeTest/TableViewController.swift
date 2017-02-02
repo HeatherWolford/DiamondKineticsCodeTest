@@ -14,6 +14,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var players: Array<Player> = []
     fileprivate let cellIdentifier = "resultsCell"
     var batSpeedParameter: Float = 0.000
+    var revisedPlayerList: Array<Player> = []
     
     //Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -37,6 +38,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //All avaliable players
         players = [Player1, Player2, Player3, Player4, Player5, Player6, Player7, Player8, Player9, Player10]
+        
+        revisedPlayerList = retrieveList(timeParameter: batSpeedParameter, players: players)
     }
     
     //Determine the number of rows in the tableView
@@ -51,7 +54,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TableViewCell
         //Get current list based upon parameters
-        let revisedPlayerList = retrieveList(timeParameter: batSpeedParameter, players: players)
         let current = revisedPlayerList[indexPath.row]
         cell.nameLabel.text = current.name
         cell.leagueLabel.text = current.league
